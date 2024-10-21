@@ -7,26 +7,40 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-image: url('background.jpg'); /* Replace with your image URL */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the image */
             text-align: center;
             margin-top: 100px;
+            color: white; /* Text color for better visibility */
+        }
+        h1 {
+            color: #FFD700; /* Golden color */
+            font-size: 2.5em; /* Bigger font size */
+        }
+        p {
+            color: #FFA500; /* Orange color */
+            font-size: 1.5em; /* Bigger font size */
         }
         .prank-btn {
             padding: 15px 30px;
-            background-color: #ff4747;
+            background-color: rgba(255, 71, 71, 0.8); /* Semi-transparent red */
             color: white;
             border: none;
             cursor: pointer;
             font-size: 20px;
+            transition: all 0.3s; /* Smooth transition */
+            margin-top: 20px; /* Space above button */
         }
         .prank-btn:hover {
-            background-color: #ff0000;
+            background-color: #ff0000; /* Red color on hover */
+            transform: scale(1.1); /* Button size increase on hover */
         }
         .disappearing-btn {
             margin-top: 20px;
             display: inline-block;
             padding: 10px 20px;
-            background-color: #47a7ff;
+            background-color: rgba(71, 167, 255, 0.8); /* Semi-transparent blue */
             color: white;
             cursor: pointer;
             font-size: 18px;
@@ -35,10 +49,12 @@
 </head>
 <body>
 
-    <h1>Welcome to the Prank Zone!</h1>
-    <p>Click the button below... if you can!</p>
-
+    <h1>This is Shub</h1>
+    <p>If you don't love me, click the button below!</p>
+    <p>Aise kya dekh raha, click kar!</p>
+    
     <button class="disappearing-btn" id="disappearingBtn">Click Me!</button>
+    <button class="prank-btn" onclick="alert('You got pranked again!')">Another Prank!</button>
 
     <script>
         const disappearingBtn = document.getElementById('disappearingBtn');
