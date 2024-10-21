@@ -45,6 +45,11 @@
             cursor: pointer;
             font-size: 18px;
         }
+        .funny-text {
+            color: #00FF00; /* Bright green for funny text */
+            font-size: 1.8em; /* Slightly bigger font size */
+            margin-top: 30px; /* Space above funny text */
+        }
     </style>
 </head>
 <body>
@@ -54,7 +59,10 @@
     <p>Aise kya dekh raha, click kar!</p>
     
     <button class="disappearing-btn" id="disappearingBtn">Click Me!</button>
-    <button class="prank-btn" onclick="alert('You got pranked again!')">Another Prank!</button>
+    <p class="funny-text">Kya tumhe lagta hai main funny nahi hoon? 😂</p>
+    <p class="funny-text">Agar haan, to ye button click karo!</p>
+    
+    <button class="prank-btn" onclick="alert('You got pranked!')">Kya Tumne Click Kiya?</button>
 
     <script>
         const disappearingBtn = document.getElementById('disappearingBtn');
