@@ -3,82 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prank Website</title>
+    <title>Simple Quiz</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('background.jpg'); /* Replace with your image URL */
-            background-size: cover; /* Cover the entire background */
-            background-position: center; /* Center the image */
-            text-align: center;
-            margin-top: 100px;
-            color: white; /* Text color for better visibility */
+            background-color: #f4f4f4;
+            padding: 20px;
         }
-        h1 {
-            color: #FFD700; /* Golden color */
-            font-size: 2.5em; /* Bigger font size */
+        .question {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 10px 0;
         }
-        p {
-            color: #FFA500; /* Orange color */
-            font-size: 1.5em; /* Bigger font size */
+        .options {
+            list-style-type: none;
+            padding: 0;
         }
-        .prank-btn {
-            padding: 15px 30px;
-            background-color: rgba(255, 71, 71, 0.8); /* Semi-transparent red */
-            color: white;
-            border: none;
+        .options li {
+            background: #eaeaea;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 20px;
-            transition: all 0.3s; /* Smooth transition */
-            margin-top: 20px; /* Space above button */
         }
-        .prank-btn:hover {
-            background-color: #ff0000; /* Red color on hover */
-            transform: scale(1.1); /* Button size increase on hover */
-        }
-        .disappearing-btn {
+        #next-button {
+            display: none;
             margin-top: 20px;
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: rgba(71, 167, 255, 0.8); /* Semi-transparent blue */
-            color: white;
-            cursor: pointer;
-            font-size: 18px;
-        }
-        .funny-text {
-            color: #00FF00; /* Bright green for funny text */
-            font-size: 1.8em; /* Slightly bigger font size */
-            margin-top: 30px; /* Space above funny text */
         }
     </style>
 </head>
 <body>
-
-    <h1>This is Shub</h1>
-    <p>If you don't love me, click the button below!</p>
-    <p>Aise kya dekh raha, click kar!</p>
-    
-    <button class="disappearing-btn" id="disappearingBtn">Click Me!</button>
-    <p class="funny-text">Kya tumhe lagta hai main funny nahi hoon? 😂</p>
-    <p class="funny-text">Agar haan, to ye button click karo!</p>
-    
-    <button class="prank-btn" onclick="alert('You got pranked!')">Kya Tumne Click Kiya?</button>
+    <div id="quiz-container">
+        <div class="question">
+            <h2 id="question-text"></h2>
+            <ul class="options" id="options-list"></ul>
+        </div>
+        <button id="next-button">Next Question</button>
+    </div>
 
     <script>
-        const disappearingBtn = document.getElementById('disappearingBtn');
+        const questions = [
+            {
+                question: "1. Aapka favorite color kya hai?",
+                options: ["Red", "Blue", "Green", "Yellow"],
+            },
+            {
+                question: "2. Aapka favorite food kya hai?",
+                options: ["Pasta", "Biryani", "Pizza", "Salad"],
+            },
+            {
+                question: "3. Aapka favorite animal kya hai?",
+                options: ["Dog", "Cat", "Elephant", "Tiger"],
+            },
+        ];
 
-        disappearingBtn.addEventListener('mouseover', function() {
-            const randomX = Math.random() * (window.innerWidth - 100);
-            const randomY = Math.random() * (window.innerHeight - 50);
-            disappearingBtn.style.position = 'absolute';
-            disappearingBtn.style.left = randomX + 'px';
-            disappearingBtn.style.top = randomY + 'px';
+        let currentQuestionIndex = 0;
+
+        function loadQuestion() {
+            const questionElement = document.getElementById("question-text");
+            const optionsList = document.getElementById("options-list");
+            const nextButton = document.getElementById("next-button");
+
+            questionElement.innerText = questions[currentQuestionIndex].question;
+            optionsList.innerHTML = ""; // Clear previous options
+
+            questions[currentQuestionIndex].options.forEach((option) => {
+                const li = document.createElement("li");
+                li.innerText = option;
+                li.addEventListener("click", () => {
+                    nextButton.style.display = "block"; // Show next button
+                });
+                optionsList.appendChild(li);
+            });
+
+            nextButton.style.display = "none"; // Hide next button initially
+        }
+
+        document.getElementById("next-button").addEventListener("click", () => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                alert("Quiz Complete!"); // Quiz completion message
+                currentQuestionIndex = 0; // Reset for next round
+                loadQuestion(); // Reload first question
+            }
         });
 
-        setTimeout(() => {
-            alert('You just got pranked!');
-        }, 5000);
+        loadQuestion(); // Load the first question
     </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .question {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            background: #eaeaea;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #next-button {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="quiz-container">
+        <div class="question">
+            <h2 id="question-text"></h2>
+            <ul class="options" id="options-list"></ul>
+        </div>
+        <button id="next-button">Next Question</button>
+    </div>
 
+    <script>
+        const questions = [
+            {
+                question: "1. Aapka favorite color kya hai?",
+                options: ["Red", "Blue", "Green", "Yellow"],
+            },
+            {
+                question: "2. Aapka favorite food kya hai?",
+                options: ["Pasta", "Biryani", "Pizza", "Salad"],
+            },
+            {
+                question: "3. Aapka favorite animal kya hai?",
+                options: ["Dog", "Cat", "Elephant", "Tiger"],
+            },
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function loadQuestion() {
+            const questionElement = document.getElementById("question-text");
+            const optionsList = document.getElementById("options-list");
+            const nextButton = document.getElementById("next-button");
+
+            questionElement.innerText = questions[currentQuestionIndex].question;
+            optionsList.innerHTML = ""; // Clear previous options
+
+            questions[currentQuestionIndex].options.forEach((option) => {
+                const li = document.createElement("li");
+                li.innerText = option;
+                li.addEventListener("click", () => {
+                    nextButton.style.display = "block"; // Show next button
+                });
+                optionsList.appendChild(li);
+            });
+
+            nextButton.style.display = "none"; // Hide next button initially
+        }
+
+        document.getElementById("next-button").addEventListener("click", () => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                alert("Quiz Complete!"); // Quiz completion message
+                currentQuestionIndex = 0; // Reset for next round
+                loadQuestion(); // Reload first question
+            }
+        });
+
+        loadQuestion(); // Load the first question
+    </script>
 </body>
 </html>
