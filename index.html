@@ -3,191 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Quiz</title>
+    <title>Prank Website</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
+            background-color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin-top: 100px;
         }
-        .question {
-            background: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 10px 0;
+
+        .symbols {
+            font-size: 50px;
+            margin-bottom: 20px;
         }
-        .options {
-            list-style-type: none;
-            padding: 0;
+
+        h1 {
+            color: black;
         }
-        .options li {
-            background: #eaeaea;
-            margin: 5px 0;
-            padding: 10px;
-            border-radius: 5px;
+
+        .prank-btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            border: none;
             cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
         }
-        #next-button {
-            display: none;
+
+        .prank-btn:hover {
+            left: 100px;
+        }
+
+        .warning {
             margin-top: 20px;
+            color: red;
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
-    <div id="quiz-container">
-        <div class="question">
-            <h2 id="question-text"></h2>
-            <ul class="options" id="options-list"></ul>
-        </div>
-        <button id="next-button">Next Question</button>
-    </div>
+
+    <div class="symbols">😎🔥💯💀✨</div>
+    
+    <h1>Aise kya dekh raha hai? Click kr agar tu good person hai to click hoga.</h1>
+
+    <button class="prank-btn">Touch kar</button>
+
+    <p class="warning">Agar tu isko click nhi kr paya to tere touch bad touch hai!</p>
 
     <script>
-        const questions = [
-            {
-                question: "1. Aapka favorite color kya hai?",
-                options: ["Red", "Blue", "Green", "Yellow"],
-            },
-            {
-                question: "2. Aapka favorite food kya hai?",
-                options: ["Pasta", "Biryani", "Pizza", "Salad"],
-            },
-            {
-                question: "3. Aapka favorite animal kya hai?",
-                options: ["Dog", "Cat", "Elephant", "Tiger"],
-            },
-        ];
-
-        let currentQuestionIndex = 0;
-
-        function loadQuestion() {
-            const questionElement = document.getElementById("question-text");
-            const optionsList = document.getElementById("options-list");
-            const nextButton = document.getElementById("next-button");
-
-            questionElement.innerText = questions[currentQuestionIndex].question;
-            optionsList.innerHTML = ""; // Clear previous options
-
-            questions[currentQuestionIndex].options.forEach((option) => {
-                const li = document.createElement("li");
-                li.innerText = option;
-                li.addEventListener("click", () => {
-                    nextButton.style.display = "block"; // Show next button
-                });
-                optionsList.appendChild(li);
-            });
-
-            nextButton.style.display = "none"; // Hide next button initially
-        }
-
-        document.getElementById("next-button").addEventListener("click", () => {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                loadQuestion();
-            } else {
-                alert("Quiz Complete!"); // Quiz completion message
-                currentQuestionIndex = 0; // Reset for next round
-                loadQuestion(); // Reload first question
-            }
+        document.querySelector('.prank-btn').addEventListener('mouseover', function() {
+            this.style.left = (Math.random() * 300) + 'px';
+            this.style.top = (Math.random() * 300) + 'px';
         });
-
-        loadQuestion(); // Load the first question
     </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Quiz</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        .question {
-            background: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-        .options {
-            list-style-type: none;
-            padding: 0;
-        }
-        .options li {
-            background: #eaeaea;
-            margin: 5px 0;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #next-button {
-            display: none;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <div id="quiz-container">
-        <div class="question">
-            <h2 id="question-text"></h2>
-            <ul class="options" id="options-list"></ul>
-        </div>
-        <button id="next-button">Next Question</button>
-    </div>
 
-    <script>
-        const questions = [
-            {
-                question: "1. Aapka favorite color kya hai?",
-                options: ["Red", "Blue", "Green", "Yellow"],
-            },
-            {
-                question: "2. Aapka favorite food kya hai?",
-                options: ["Pasta", "Biryani", "Pizza", "Salad"],
-            },
-            {
-                question: "3. Aapka favorite animal kya hai?",
-                options: ["Dog", "Cat", "Elephant", "Tiger"],
-            },
-        ];
-
-        let currentQuestionIndex = 0;
-
-        function loadQuestion() {
-            const questionElement = document.getElementById("question-text");
-            const optionsList = document.getElementById("options-list");
-            const nextButton = document.getElementById("next-button");
-
-            questionElement.innerText = questions[currentQuestionIndex].question;
-            optionsList.innerHTML = ""; // Clear previous options
-
-            questions[currentQuestionIndex].options.forEach((option) => {
-                const li = document.createElement("li");
-                li.innerText = option;
-                li.addEventListener("click", () => {
-                    nextButton.style.display = "block"; // Show next button
-                });
-                optionsList.appendChild(li);
-            });
-
-            nextButton.style.display = "none"; // Hide next button initially
-        }
-
-        document.getElementById("next-button").addEventListener("click", () => {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                loadQuestion();
-            } else {
-                alert("Quiz Complete!"); // Quiz completion message
-                currentQuestionIndex = 0; // Reset for next round
-                loadQuestion(); // Reload first question
-            }
-        });
-
-        loadQuestion(); // Load the first question
-    </script>
 </body>
 </html>
