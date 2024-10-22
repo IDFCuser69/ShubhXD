@@ -32,10 +32,6 @@
             transition: all 0.3s ease;
         }
 
-        .prank-btn:hover {
-            left: 100px;
-        }
-
         .warning {
             margin-top: 20px;
             color: red;
@@ -54,9 +50,22 @@
     <p class="warning">Agar tu isko click nhi kr paya to tere touch bad touch hai!</p>
 
     <script>
-        document.querySelector('.prank-btn').addEventListener('mouseover', function() {
-            this.style.left = (Math.random() * 300) + 'px';
-            this.style.top = (Math.random() * 300) + 'px';
+        let clickCount = 0;
+        const maxClicks = 100;
+
+        document.querySelector('.prank-btn').addEventListener('click', function() {
+            clickCount++;
+            if (clickCount < maxClicks) {
+                // Move button to random position
+                this.style.position = 'absolute';
+                this.style.left = (Math.random() * (window.innerWidth - this.offsetWidth)) + 'px';
+                this.style.top = (Math.random() * (window.innerHeight - this.offsetHeight)) + 'px';
+            } else {
+                // Stop moving after 100 clicks
+                this.disabled = true;
+                this.textContent = 'Ruk gaya!';
+                this.style.backgroundColor = 'red';
+            }
         });
     </script>
 
